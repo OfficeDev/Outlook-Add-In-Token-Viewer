@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!-- Copyright (c) Microsoft. All rights reserved. Licensed under the MIT license. See LICENSE in the project root for license information. -->
+<OfficeApp 
+  xmlns="http://schemas.microsoft.com/office/appforoffice/1.1" 
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+  xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0"
+  xsi:type="MailApp">
+  <Id>baad3e9f-66ec-4f6e-a567-23e467df0502</Id>
+  <Version>1.0.0.0</Version>
+  <ProviderName>Outlook Dev Center</ProviderName>
+  <DefaultLocale>en-US</DefaultLocale>
+  <DisplayName DefaultValue="Outlook Token Viewer"/>
+  <Description DefaultValue="Gets the callback token for the current message or appointment."/>
+  <HighResolutionIconUrl DefaultValue="https://localhost:44359/add-in/images/hi-res-icon.png"/>
+  <Hosts>
+    <Host Name="Mailbox"/>
+  </Hosts>
+  <Requirements>
+    <Sets>
+      <Set Name="MailBox" MinVersion="1.1"/>
+    </Sets>
+  </Requirements>
+  <FormSettings>
+    <Form xsi:type="ItemRead">
+      <DesktopSettings>
+        <SourceLocation DefaultValue="https://localhost:44359/add-in/TaskPane/TaskPane.html"/>
+        <RequestedHeight>250</RequestedHeight>
+      </DesktopSettings>
+    </Form>
+  </FormSettings>
+  <Permissions>ReadWriteMailbox</Permissions>
+  <Rule xsi:type="RuleCollection" Mode="Or">
+    <Rule xsi:type="ItemIs" ItemType="Message" FormType="Read"/>
+    <Rule xsi:type="ItemIs" ItemType="Appointment" FormType="Read"/>
+  </Rule>
+  <DisableEntityHighlighting>false</DisableEntityHighlighting>
+  <VersionOverrides xmlns="http://schemas.microsoft.com/office/mailappversionoverrides" xsi:type="VersionOverridesV1_0">
+    <Hosts>
+      <Host xsi:type="MailHost">
+        <DesktopFormFactor>
+          <FunctionFile resid="funcFile"/>
+          <ExtensionPoint xsi:type="MessageReadCommandSurface">
+            <OfficeTab id="TabDefault">
+              <Group id="msgReadCmdGroup">
+                <Label resid="groupLabel"/>
+                <Control xsi:type="Button" id="showTokensButton">
+                  <Label resid="taskPaneButtonLabel"/>
+                  <Supertip>
+                    <Title resid="taskPaneButtonTitle"/>
+                    <Description resid="taskPaneButtonDesc"/>
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="icon-16"/>
+                    <bt:Image size="32" resid="icon-32"/>
+                    <bt:Image size="80" resid="icon-80"/>
+                  </Icon>
+                  <Action xsi:type="ShowTaskpane">
+                    <SourceLocation resid="taskPaneUrl"/>
+                  </Action>
+                </Control>
+                <Control xsi:type="Button" id="validateIdTokenButton">
+                  <Label resid="validateButtonLabel"/>
+                  <Supertip>
+                    <Title resid="validateButtonTitle"/>
+                    <Description resid="validateButtonDesc"/>
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="icon-16"/>
+                    <bt:Image size="32" resid="icon-32"/>
+                    <bt:Image size="80" resid="icon-80"/>
+                  </Icon>
+                  <Action xsi:type="ExecuteFunction">
+                    <FunctionName>validateIdToken</FunctionName>
+                  </Action>
+                </Control>
+              </Group>
+            </OfficeTab>
+          </ExtensionPoint>
+        </DesktopFormFactor>
+      </Host>
+    </Hosts>
+    <Resources>
+      <bt:Images>
+        <bt:Image id="icon-16" DefaultValue="https://localhost:44359/add-in/images/icon-16.png"/>
+        <bt:Image id="icon-32" DefaultValue="https://localhost:44359/add-in/images/icon-32.png"/>
+        <bt:Image id="icon-80" DefaultValue="https://localhost:44359/add-in/images/icon-80.png"/>
+      </bt:Images>
+      <bt:Urls>
+        <bt:Url id="funcFile" DefaultValue="https://localhost:44359/add-in/FunctionFile/Functions.html"/>
+        <bt:Url id="taskPaneUrl" DefaultValue="https://localhost:44359/add-in/TaskPane/TaskPane.html"/>
+      </bt:Urls>
+      <bt:ShortStrings>
+        <bt:String id="groupLabel" DefaultValue="Token Viewer"/>
+        <bt:String id="taskPaneButtonLabel" DefaultValue="Get Callback Token"/>
+        <bt:String id="taskPaneButtonTitle" DefaultValue="Get Callback Token"/>
+        <bt:String id="validateButtonLabel" DefaultValue="Validate ID Token"/>
+        <bt:String id="validateButtonTitle" DefaultValue="Validate ID Token"/>
+      </bt:ShortStrings>
+      <bt:LongStrings>
+        <bt:String id="taskPaneButtonDesc" DefaultValue="Opens a task pane showing the callback token for the currently selected message or appointment"/>
+        <bt:String id="validateButtonDesc" DefaultValue="Sends the identity token to a Web API for validation"/>
+      </bt:LongStrings>
+    </Resources>
+
+    <!-- VersionOverrides for the v1.1 schema -->
+    <VersionOverrides xmlns="http://schemas.microsoft.com/office/mailappversionoverrides/1.1" xsi:type="VersionOverridesV1_1">
+      <Hosts>
+        <Host xsi:type="MailHost">
+          <DesktopFormFactor>
+            <FunctionFile resid="funcFile"/>
+            <ExtensionPoint xsi:type="MessageReadCommandSurface">
+              <OfficeTab id="TabDefault">
+                <Group id="msgReadCmdGroup">
+                  <Label resid="groupLabel"/>
+                  <Control xsi:type="Button" id="showTokensButton">
+                    <Label resid="taskPaneButtonLabel"/>
+                    <Supertip>
+                      <Title resid="taskPaneButtonTitle"/>
+                      <Description resid="taskPaneButtonDesc"/>
+                    </Supertip>
+                    <Icon>
+                      <bt:Image size="16" resid="icon-16"/>
+                      <bt:Image size="32" resid="icon-32"/>
+                      <bt:Image size="80" resid="icon-80"/>
+                    </Icon>
+                    <Action xsi:type="ShowTaskpane">
+                      <SourceLocation resid="taskPaneUrl"/>
+                    </Action>
+                  </Control>
+                  <Control xsi:type="Button" id="validateIdTokenButton">
+                    <Label resid="validateButtonLabel"/>
+                    <Supertip>
+                      <Title resid="validateButtonTitle"/>
+                      <Description resid="validateButtonDesc"/>
+                    </Supertip>
+                    <Icon>
+                      <bt:Image size="16" resid="icon-16"/>
+                      <bt:Image size="32" resid="icon-32"/>
+                      <bt:Image size="80" resid="icon-80"/>
+                    </Icon>
+                    <Action xsi:type="ExecuteFunction">
+                      <FunctionName>validateIdToken</FunctionName>
+                    </Action>
+                  </Control>
+                </Group>
+              </OfficeTab>
+            </ExtensionPoint>
+          </DesktopFormFactor>
+        </Host>
+      </Hosts>
+      <Resources>
+        <bt:Images>
+          <bt:Image id="icon-16" DefaultValue="https://localhost:44359/add-in/images/icon-16.png"/>
+          <bt:Image id="icon-32" DefaultValue="https://localhost:44359/add-in/images/icon-32.png"/>
+          <bt:Image id="icon-80" DefaultValue="https://localhost:44359/add-in/images/icon-80.png"/>
+        </bt:Images>
+        <bt:Urls>
+          <bt:Url id="funcFile" DefaultValue="https://localhost:44359/add-in/FunctionFile/Functions.html"/>
+          <bt:Url id="taskPaneUrl" DefaultValue="https://localhost:44359/add-in/TaskPane/TaskPane.html"/>
+        </bt:Urls>
+        <bt:ShortStrings>
+          <bt:String id="groupLabel" DefaultValue="Token Viewer"/>
+          <bt:String id="taskPaneButtonLabel" DefaultValue="View Tokens"/>
+          <bt:String id="taskPaneButtonTitle" DefaultValue="View Tokens"/>
+          <bt:String id="validateButtonLabel" DefaultValue="Validate ID Token"/>
+          <bt:String id="validateButtonTitle" DefaultValue="Validate ID Token"/>
+        </bt:ShortStrings>
+        <bt:LongStrings>
+          <bt:String id="taskPaneButtonDesc" DefaultValue="Opens a task pane showing the callback token for the currently selected message or appointment"/>
+          <bt:String id="validateButtonDesc" DefaultValue="Sends the identity token to a Web API for validation"/>
+        </bt:LongStrings>
+      </Resources>
+
+      <WebApplicationInfo>
+        <Id>YOUR_APP_ID</Id>
+        <Resource>api://localhost:44359/YOUR_APP_ID</Resource>
+        <Scopes>
+          <Scope>user.read</Scope>
+          <Scope>files.read.all</Scope>
+        </Scopes>
+      </WebApplicationInfo>
+      
+    </VersionOverrides>
+
+  </VersionOverrides>
+</OfficeApp>

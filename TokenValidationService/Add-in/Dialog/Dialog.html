@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<!-- Copyright (c) Microsoft. All rights reserved. Licensed under the MIT license. See LICENSE in the project root for license information. -->
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title></title>
+  <!--<link href="//appsforoffice.microsoft.com/fabric/1.0/fabric.min.css" rel="stylesheet">-->
+  <link href="//static2.sharepointonline.com/files/fabric/office-ui-fabric-js/1.3.0/css/fabric.min.css" rel="stylesheet">
+  <link href="//static2.sharepointonline.com/files/fabric/office-ui-fabric-js/1.3.0/css/fabric.components.min.css" rel="stylesheet">
+  <link href="Dialog.css" rel="stylesheet" type="text/css" />
+
+  <script src="//ajax.aspnetcdn.com/ajax/jQuery/jquery-1.9.1.min.js"></script>
+  <script src="//appsforoffice.microsoft.com/lib/1/hosted/office.js"></script>
+  <script src="//static2.sharepointonline.com/files/fabric/office-ui-fabric-js/1.3.0/js/fabric.min.js"></script>
+  <script src="Dialog.js"></script>
+</head>
+
+<body>
+  <div id="content-main">
+      <h2 class="ms-font-xl">Validation Results</h2>
+      <div id="validation-status" class="ms-font-l"><strong>RESULT:</strong> <span id="status-valid" class="ms-fontColor-success">VALID</span><span id="status-invalid" class="ms-fontColor-error">INVALID</span></div>
+      <div id="unique-id">
+        <strong class="ms-font-l">Unique user ID:</strong>
+        <pre><code id="userid"></code></pre>
+      </div>
+      <h2 class="ms-font-xl">Validation Details</h2>
+      <table class="ms-Table">
+        <thead>
+          <tr>
+            <th>Validation Check</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="ms-font-l">Signature</td>
+            <td id="signature-result" class="ms-font-l"></td>
+          </tr>
+          <tr>
+            <td class="ms-font-l">Audience</td>
+            <td id="audience-result" class="ms-font-l"></td>
+          </tr>
+          <tr>
+            <td class="ms-font-l">Lifetime</td>
+            <td id="lifetime-result" class="ms-font-l"></td>
+          </tr>
+          <tr>
+            <td class="ms-font-l">Version</td>
+            <td id="version-result" class="ms-font-l"></td>
+          </tr>
+        </tbody>
+      </table>
+      <div id="validation-message">
+        <h2 class="ms-font-xl">Validation message</h2>
+        <pre><code id="message"></code></pre>
+      </div>
+  </div>
+</body>
+</html>

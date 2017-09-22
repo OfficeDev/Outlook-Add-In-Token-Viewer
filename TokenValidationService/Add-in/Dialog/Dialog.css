@@ -1,0 +1,20 @@
+/* Copyright (c) Microsoft. All rights reserved. Licensed under the MIT license. See LICENSE in the project root for license information. */
+#status-valid, #status-invalid, #unique-id, #validation-message {
+  display: none;
+}
+
+#validation-status, #unique-id {
+  padding-bottom: 10px;
+}
+
+#validation-message {
+  padding-top: 10px;
+}
+
+pre {
+  background-color: #f8f8f8;
+  border: 1px solid #ccc;
+  padding: 6px 10px;
+  word-wrap: break-word;
+  white-space: pre-wrap;
+}
