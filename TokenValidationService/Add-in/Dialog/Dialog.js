@@ -28,9 +28,21 @@ $(document).ready(function(){
   var lifeResult = getParameterByName("LifetimeResult");
   generateIcon(lifeResult, $("#lifetime-result"));
 
-  // Check version result
+  // Check version result (only for ID token)
   var verResult = getParameterByName("VersionResult");
-  generateIcon(verResult, $("#version-result"));
+  if (verResult) {
+    generateIcon(verResult, $("#version-result"));
+  } else {
+    $("#ver-row").hide();
+  }
+
+  // Check issuer result (only for SSO token)
+  var issResult = getParameterByName("IssuerResult");
+  if (issResult) {
+    generateIcon(issResult, $("#issuer-result"));
+  } else {
+    $("#iss-row").hide();
+  }
 
   // Check for message
   var message = getParameterByName("Message");

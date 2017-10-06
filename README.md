@@ -28,6 +28,7 @@ Because this sample retrieves an SSO token, you must register the add-in in the 
 1. Open the add-in manifest [manifest-outlook-token-viewer.xml](TokenValidationService/Add-in/manifest-outlook-token-viewer.xml).
 1. Replace all instances of `YOUR_APP_ID` in the manifest with the app ID generated in your app registration.
 1. Update the `<Scopes>` element in the manifest to reflect the permissions you configured in the **Microsoft Graph Permissions** section of your app registration.
+1. Open the [Web.config](TokenValidationService/Web.config) file and replace all instances of `YOUR_APP_ID` in the manifest with the app ID generated in your app registration.
 
 ### Provide user consent
 

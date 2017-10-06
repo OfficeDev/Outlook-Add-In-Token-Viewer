@@ -492,6 +492,35 @@
             </summary>
             <param name="token">The Exchange user identity token as obtained via Office.context.mailbox.getUserIdentityTokenAsync</param>
         </member>
+        <member name="T:TokenValidationService.Controllers.ValidateSsoTokenController">
+            <summary>
+            Validates an Office add-in SSO token
+            </summary>
+        </member>
+        <member name="M:TokenValidationService.Controllers.ValidateSsoTokenController.Post(System.String)">
+            <summary>
+            Validates an Exchange user identity token
+            </summary>
+            <param name="token">The SSO token as obtained via Office.context.auth.getAccessTokenAsync</param>
+        </member>
+        <member name="T:TokenValidationService.Models.AddInSsoToken">
+            <summary>
+            Represents an add-in SSO token.
+            </summary>
+        </member>
+        <member name="M:TokenValidationService.Models.AddInSsoToken.#ctor(System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="encodedToken">The serialized JWT Token</param>
+        </member>
+        <member name="M:TokenValidationService.Models.AddInSsoToken.Validate(System.String)">
+            <summary>
+            Validates the token
+            </summary>
+            <param name="expectedAudience">The valid audience value to check</param>
+            <returns></returns>
+        </member>
         <member name="T:TokenValidationService.Models.ExchangeAppContext">
             <summary>
             Representation of the appctx claim in an Exchange user identity token.
@@ -666,6 +695,51 @@
             </summary>
         </member>
         <member name="M:TokenValidationService.Models.IdTokenValidationResult.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="T:TokenValidationService.Models.SsoTokenValidationResult">
+            <summary>
+            Provides validation results for an add-in SSO token
+            </summary>
+        </member>
+        <member name="P:TokenValidationService.Models.SsoTokenValidationResult.IsValid">
+            <summary>
+            Indicates if the token is valid
+            </summary>
+        </member>
+        <member name="P:TokenValidationService.Models.SsoTokenValidationResult.Message">
+            <summary>
+            Validation result message, typically indicates a reason for failure. Optional.
+            </summary>
+        </member>
+        <member name="P:TokenValidationService.Models.SsoTokenValidationResult.AudienceResult">
+            <summary>
+            Indicates the result of validating the audience.
+            </summary>
+        </member>
+        <member name="P:TokenValidationService.Models.SsoTokenValidationResult.IssuerResult">
+            <summary>
+            Indicates the result of validating the issuer.
+            </summary>
+        </member>
+        <member name="P:TokenValidationService.Models.SsoTokenValidationResult.LifetimeResult">
+            <summary>
+            Indicates the result of validating the lifetime.
+            </summary>
+        </member>
+        <member name="P:TokenValidationService.Models.SsoTokenValidationResult.SignatureResult">
+            <summary>
+            Indicates the result of validating the signature.
+            </summary>
+        </member>
+        <member name="P:TokenValidationService.Models.SsoTokenValidationResult.ComputedUserId">
+            <summary>
+            The computed User ID. If the token is invalid, this value will be empty.
+            </summary>
+        </member>
+        <member name="M:TokenValidationService.Models.SsoTokenValidationResult.#ctor">
             <summary>
             Constructor
             </summary>

@@ -142,6 +142,21 @@
                       <FunctionName>validateIdToken</FunctionName>
                     </Action>
                   </Control>
+                  <Control xsi:type="Button" id="validateSsoTokenButton">
+                    <Label resid="validateSsoButtonLabel"/>
+                    <Supertip>
+                      <Title resid="validateSsoButtonTitle"/>
+                      <Description resid="validateSsoButtonDesc"/>
+                    </Supertip>
+                    <Icon>
+                      <bt:Image size="16" resid="icon-16"/>
+                      <bt:Image size="32" resid="icon-32"/>
+                      <bt:Image size="80" resid="icon-80"/>
+                    </Icon>
+                    <Action xsi:type="ExecuteFunction">
+                      <FunctionName>validateSsoToken</FunctionName>
+                    </Action>
+                  </Control>
                 </Group>
               </OfficeTab>
             </ExtensionPoint>
@@ -164,10 +179,13 @@
           <bt:String id="taskPaneButtonTitle" DefaultValue="View Tokens"/>
           <bt:String id="validateButtonLabel" DefaultValue="Validate ID Token"/>
           <bt:String id="validateButtonTitle" DefaultValue="Validate ID Token"/>
+          <bt:String id="validateSsoButtonLabel" DefaultValue="Validate SSO Token"/>
+          <bt:String id="validateSsoButtonTitle" DefaultValue="Validate SSO Token"/>
         </bt:ShortStrings>
         <bt:LongStrings>
           <bt:String id="taskPaneButtonDesc" DefaultValue="Opens a task pane showing the callback token for the currently selected message or appointment"/>
           <bt:String id="validateButtonDesc" DefaultValue="Sends the identity token to a Web API for validation"/>
+          <bt:String id="validateSsoButtonDesc" DefaultValue="Sends the SSO token to a Web API for validation"/>
         </bt:LongStrings>
       </Resources>
 

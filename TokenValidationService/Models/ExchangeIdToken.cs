@@ -16,8 +16,6 @@ namespace TokenValidationService.Models
     /// </summary>
     public class ExchangeIdToken : JwtSecurityToken
     {
-        private string encodedToken;
-
         /// <summary>
         /// The Exchange-specific claims in the token, stored in the "appctx" claim
         /// </summary>
@@ -29,9 +27,6 @@ namespace TokenValidationService.Models
         /// <param name="encodedToken">The serialized JWT Token</param>
         public ExchangeIdToken(string encodedToken) : base (encodedToken)
         {
-            // Save the encoded token
-            this.encodedToken = encodedToken;
-
             // Parse the appctx claim to get Exchange-specific info
             var appctx = Claims.FirstOrDefault(claim => claim.Type == "appctx");
             if (appctx != null)
@@ -77,7 +72,7 @@ namespace TokenValidationService.Models
 
             try
             {
-                var claimsPrincipal = tokenHandler.ValidateToken(encodedToken, tvp, out SecurityToken validatedToken);
+                var claimsPrincipal = tokenHandler.ValidateToken(RawData, tvp, out SecurityToken validatedToken);
 
                 // If no exception, all standard checks passed
                 result.LifetimeResult = result.SignatureResult = result.AudienceResult = "passed";

@@ -34,7 +34,7 @@ function showDialog(data, event) {
 function validateIdToken(event) {
   Office.context.mailbox.getUserIdentityTokenAsync(function(result) {
     if (result.status == "succeeded") {
-      idToken = result.value;
+      var idToken = result.value;
 
       // Send token to validation service
       $.ajax({
@@ -50,6 +50,34 @@ function validateIdToken(event) {
       });
     } else {
       reportError("Error retrieving ID token: " + result.error.message, event);
+    }
+  });
+}
+
+function validateSsoToken(event) {
+  if (Office.context.auth && Office.context.auth.getAccessTokenAsync !== undefined){
+
+  } else {
+    reportError("Client does not support SSO token", event);
+  }
+  Office.context.auth.getAccessTokenAsync(function(result) {
+    if (result.status == "succeeded") {
+      var ssoToken = result.value;
+
+      // Send token to validation service
+      $.ajax({
+        type: "POST",
+        url: "/api/validatessotoken",
+        data: JSON.stringify(ssoToken),
+        contentType: "application/json; charset=utf-8"
+      }).done(function (data) {
+          // Display dialog with validation results
+          showDialog(data, event);
+      }).fail(function (error) {
+          reportError("Error validating SSO token: " + error.status, event);
+      });
+    } else {
+      reportError("Error retrieving SSO token: " + result.error.message, event);
     }
   });
 }
