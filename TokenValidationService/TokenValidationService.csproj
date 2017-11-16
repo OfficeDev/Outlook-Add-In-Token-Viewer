@@ -220,7 +220,7 @@
     <Content Include="Add-in\images\icon-32.png" />
     <Content Include="Add-in\images\icon-80.png" />
     <Content Include="Add-in\manifest-outlook-token-viewer.xml" />
-    <Content Include="Add-in\scripts\jwt-decode.min.js" />
+    <Content Include="Add-in\scripts\decode-token.js" />
     <Content Include="Add-in\TaskPane\TaskPane.css" />
     <Content Include="Add-in\TaskPane\TaskPane.html" />
     <Content Include="Add-in\TaskPane\TaskPane.js" />

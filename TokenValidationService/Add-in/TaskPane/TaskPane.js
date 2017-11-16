@@ -110,7 +110,7 @@
 
   function showIdToken(parseToken) {
     if (parseToken) {
-      $("#id-token").text(JSON.stringify(jwt_decode(idToken), null, 2));
+      $("#id-token").text(JSON.stringify(decodeToken(idToken), null, 2));
     } else {
       $("#id-token").text(idToken);
     }
@@ -118,7 +118,7 @@
   
   function showEwsToken(parseToken) {
     if (parseToken) {
-      $("#ews-token").text(JSON.stringify(jwt_decode(ewsToken), null, 2));
+      $("#ews-token").text(JSON.stringify(decodeToken(ewsToken), null, 2));
     } else {
       $("#ews-token").text(ewsToken);
     }
@@ -126,7 +126,7 @@
 
   function showRestToken(parseToken) {
     if (parseToken) {
-      $("#rest-token").text(JSON.stringify(jwt_decode(restToken), null, 2)).show();
+      $("#rest-token").text(JSON.stringify(decodeToken(restToken), null, 2)).show();
     } else {
       $("#rest-token").text(restToken).show();
     }
@@ -134,7 +134,7 @@
 
   function showSsoToken(parseToken) {
     if (parseToken) {
-      $("#sso-token").text(JSON.stringify(jwt_decode(ssoToken), null, 2)).show();
+      $("#sso-token").text(JSON.stringify(decodeToken(ssoToken), null, 2)).show();
     } else {
       $("#sso-token").text(ssoToken).show();
     }
