@@ -190,8 +190,8 @@
       </Resources>
 
       <WebApplicationInfo>
-        <Id>YOUR_APP_ID</Id>
-        <Resource>api://localhost:44359/YOUR_APP_ID</Resource>
+        <Id>44e38a16-c3f3-47b6-aa9c-190a2af5ef6b</Id>
+        <Resource>api://localhost:44359/44e38a16-c3f3-47b6-aa9c-190a2af5ef6b</Resource>
         <Scopes>
           <Scope>user.read</Scope>
           <Scope>files.read.all</Scope>
